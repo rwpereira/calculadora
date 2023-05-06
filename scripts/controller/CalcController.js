@@ -152,8 +152,9 @@ class CalcController {
 			return eval(this._operation.join(""));
 		} catch (e) {
 			setTimeout(() => {
+				console.log("errrrrr");
 				this.setError();
-			}, 1);
+			}, 5000);
 		}
 	}
 
@@ -365,10 +366,10 @@ class CalcController {
 	}
 
 	set displayCalc(value) {
-		if (value.toString().length > 10) {
-			this.setError();
-			return;
+		if (parseFloat(value).toString().length > 10) {
+			value = value.toString().slice(0, 10);
 		}
+
 		this._displayCalcEl.innerHTML = value;
 	}
 
